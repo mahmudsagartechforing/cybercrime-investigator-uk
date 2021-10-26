@@ -1,0 +1,536 @@
+@import "global_imports";
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.arrowDown {
+    position: absolute;
+    bottom: -10px;
+    left: 40px;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    transform: rotate(45deg);
+}
+
+header {
+    background-color: #182a59;
+    color: $secondaryColor;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 90px;
+    transition: max-height .8s linear;
+    overflow-y: hidden;
+
+
+    .menu-collapse {
+        justify-self: end;
+    }
+
+    @include breakpoint-up(medium) {
+        border: none
+    }
+}
+
+.link-container {
+    @include breakpoint-down(small) {
+        border-top: .5px solid rgba(255, 255, 255, .1);
+        padding-block: 2rem;
+        grid-column: 1/ span 2;
+        text-align: center;
+
+        a {
+            display: block;
+
+            &:not(:last-child) {
+                margin-block-end: 2rem;
+            }
+        }
+    }
+
+    @include breakpoint-up(medium) {
+        justify-self: end;
+
+        a {
+            &:not(:last-child) {
+                margin-inline-end: 1rem;
+            }
+        }
+    }
+}
+
+.show-on-mobile {
+    max-height: 350px;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    inset-inline: 0;
+    background: #182a59e3;
+    animation-name: opacityEffect;
+    animation-duration: .8s;
+}
+
+@keyframes opacityEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.jumbotron {
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    line-height: $font-lg;
+    margin-block-end: 1rem;
+    padding-inline: 0;
+    margin-top: 0;
+
+    @include breakpoint-up(large) {
+        padding-block: 3rem;
+        padding-inline: 1rem;
+        background-image: url('../images/R_islam.webp');
+        z-index: 3;
+
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .overlay {
+        @include breakpoint-up(large) {
+            background-color: #182a593d;
+
+        }
+    }
+
+    &--content {
+
+        @include breakpoint-up(large) {
+            padding-block-start: 2rem;
+            padding-block-end: 3rem;
+            background-color: transparent;
+        }
+
+        h2 {
+            font-weight: 900;
+            margin-block-end: 0;
+            text-align: start;
+
+            @include breakpoint-up(large) {
+                font-size: 3.5rem;
+            }
+        }
+
+        h3 {
+            font-weight: 300;
+            margin-block: 0;
+
+            @include breakpoint-up(medium) {
+                font-size: 2.3rem;
+                text-align: start;
+            }
+        }
+
+        p {
+            color: $secondaryColor;
+            font-weight: 400;
+            font-size: 1.2rem;
+
+            @include breakpoint-up(large) {
+                color: #000;
+            }
+        }
+
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            grid-gap: 1.5rem;
+        }
+    }
+
+    &--body {
+        background-image: url('../images/R_islam.webp');
+        padding-inline: 2rem;
+        padding-block: 2rem;
+        position: relative;
+
+        .overlay {
+            background-color: #ffffff3b;
+        }
+
+        @include breakpoint-up(large) {
+            background-color: transparent;
+            background-image: none;
+            padding: 0;
+
+            .overlay {
+                display: none;
+            }
+        }
+
+        @include breakpoint-down(medium) {
+            background-size: cover;
+            background-position: -70% center;
+
+            h3 {
+                width: 75%;
+            }
+
+            p {
+                width: 50%;
+            }
+        }
+
+        @include breakpoint-down(small) {
+            background-repeat: no-repeat;
+            background-size: 170%;
+            background-position: 10% center;
+            padding-inline: 2rem;
+            padding-block: 2rem;
+            position: relative;
+        }
+
+        @include breakpoint-down(xSmall) {
+            background-size: 200%;
+            background-position: 27% center;
+
+        }
+    }
+
+    &--body-text {
+        font-size: 1.4rem;
+    }
+
+    &--text-container {
+        position: relative;
+    }
+
+    &--form {
+        padding: 2rem 1rem;
+
+        @include breakpoint-up(large) {
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            text-align: center;
+            font-weight: 900;
+
+            @include breakpoint-up(medium) {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+
+    &--button {
+        button {
+            position: relative;
+            overflow: hidden;
+            transition: .5s;
+            border: 2px solid #29bc2e;
+            background-color: #fff;
+            z-index: 3;
+            border-radius: 0;
+            color: #000;
+            padding: 10px;
+            font-size: 18px;
+
+            &:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                bottom: 0%;
+                left: -100%;
+                background-color: #29bc2e;
+                transform-origin: top right;
+                transition: .5s;
+                z-index: -3;
+            }
+
+            &:hover {
+                color: #fff;
+                border: 2px solid #29bc2e;
+                background-color: transparent;
+
+                &::after {
+                    left: 0%
+                }
+            }
+        }
+    }
+
+}
+
+.partners {
+    padding-block-start: 1rem;
+
+    &--container {
+        display: grid;
+        justify-content: center;
+        grid-gap: 1.5rem;
+
+        @include breakpoint-down(medium) {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        @include breakpoint-up(medium) {
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+        }
+
+        @include breakpoint-up(large) {
+            grid-template-columns: repeat(6, 1fr);
+            align-items: center;
+        }
+    }
+}
+
+.offers {
+
+    &--container {
+        display: grid;
+
+        video {
+            width: 80%;
+            justify-self: center;
+        }
+    }
+}
+
+.work-method {
+    padding-block: 1.5rem;
+
+    h3 {
+        font-weight: 700;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    &--container {
+        display: grid;
+        align-items: center;
+        grid-gap: 1.5rem;
+        margin-bottom: 1.8rem;
+
+        @include breakpoint-up(medium) {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: start;
+        }
+    }
+
+    &--card {
+        background-color: #182a59;
+        display: grid;
+        justify-content: center;
+        grid-gap: 1.5rem;
+        color: $secondaryColor;
+        padding-block: 2rem;
+        padding-inline: 1.5rem;
+        border-radius: 15px;
+        height: 36.625rem;
+
+        h3 {
+            font-size: 1.8rem;
+            margin-block: 0;
+        }
+
+        p {
+            color: $secondaryColor;
+            margin-block: 0;
+        }
+    }
+}
+
+.clients {
+    padding-block: 3rem;
+
+    &--container {
+        @extend .partners--container;
+
+        @include breakpoint-up(medium) {
+            grid-template-columns: repeat(7, 1fr);
+        }
+    }
+}
+
+.banner {
+    background-color: $grayBackground;
+    text-align: center;
+    padding-block: 3rem;
+
+    h2 {
+        color: #000;
+        margin-block: .5rem;
+    }
+
+    .text-green {
+        color: $techForingGreen;
+    }
+
+    .action-button {
+        margin-top: 1.8rem;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+}
+
+.portfolio {
+    background-color: $grayBackground;
+    padding-block: 3rem;
+    color: $techForingBlue;
+
+    &--container {
+        display: grid;
+        grid-gap: 1rem;
+        align-items: center;
+
+        p {
+            color: $techForingBlue;
+        }
+
+        @include breakpoint-up(medium) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .profile {
+            justify-self: center;
+            text-align: center;
+
+            img {
+                width: 300px;
+                border-radius: $border-circle;
+            }
+
+            a {
+                border: 5px solid #182f59;
+                color: #182f59;
+                font-size: 1.5rem;
+                background-color: white;
+                border-radius: 3px;
+                padding: .5rem 1.2rem;
+                transition: background-color .5s;
+
+                i {
+                    color: #44bcd2;
+                    margin-inline-end: .5rem;
+                }
+
+                &:hover {
+                    background-color: #182a591a;
+                }
+            }
+        }
+
+        .profile-details {
+            justify-self: center;
+            display: grid;
+            grid-gap: 1.3rem;
+            text-align: center;
+            
+            @include breakpoint-up(medium) {
+                grid-template-columns: 1fr 1fr 1fr;
+                justify-self: start;
+            }
+
+        }
+    }
+
+}
+
+
+.testimonial {
+
+    h2 {
+        margin-bottom: .5rem;
+    }
+
+    .subHeader {
+        text-align: center;
+        margin-top: .5rem;
+    }
+
+    &--container {
+        .carousel-item {
+            position: relative;
+            text-align: center;
+            img{
+                width: 100%;
+            }
+            h3 {
+                position: absolute;
+                top: 50%;
+                color: white;
+                transform: translate(-50%, -50%);
+                left: 50%;
+            }
+        }
+
+        .card{
+            min-height: 29.2rem;
+            align-items: center;
+            background-color: #ddd;
+            border: none;
+            &::after, &::before{
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                position: absolute;
+                color: $techForingGreen;
+                font-size: 1.5rem;
+            }
+            
+            &::before{
+                content: "\f10d";
+                top: 1rem;
+                left: 1rem;
+            }
+            &::after{
+                content: "\f10e";
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        .card-img-top{
+            width: 150px !important;
+            height: 150px !important;
+            margin-inline: auto;
+            border-radius: 50%;
+        }
+        .carousel-control-next, .carousel-control-prev{
+            width: 10%;
+            
+        }
+    }
+    .slider{
+        @include breakpoint-down(medium){
+            // float: none !important;
+            // width: 100%;
+        }
+    }
+}
+
+.blue-background-banner{
+    background-color: transparent;
+    background-image: url("../images/footer.webp");
+    .action-button{
+        color: #182a59;
+    }
+}
